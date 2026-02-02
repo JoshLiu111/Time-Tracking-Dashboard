@@ -18,7 +18,6 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
 - Live Site URL: [Add live site URL here](https://your-live-site-url.com)
 
 ## My process
@@ -31,60 +30,149 @@ Users should be able to:
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Next.js](https://nextjs.org/) - React framework
-- [Styled Components](https://styled-components.com/) - For styles
-
-**Note: These are just examples. Delete this note and replace the list above with your own choices**
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+### 1. State Management with `useState`
 
-To see how you can add code snippets, see below:
+I used `useState` in `App.jsx` to manage the selected timeframe. The state is lifted to the parent component and passed down to child components as props.
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
+```jsx
+// App.jsx
+import { useState } from "react";
+import TrackingDash from "./components/trackingDash";
 
-```css
-.proud-of-this-css {
-  color: papayawhip;
+function App() {
+  const [timeframe, setTimeFrame] = useState("weekly");
+
+  return (
+    <main className="main-page">
+      <TrackingDash timeframe={timeframe} setTimeFrame={setTimeFrame} />
+    </main>
+  );
 }
+
+export default App;
 ```
 
-```js
-const proudOfThisFunc = () => {
-  console.log("🎉");
+**Key Takeaways:**
+
+- `useState` returns a state variable and a setter function
+- Lifting state to the parent allows multiple children to share and update the same state
+- Default value is set to `"weekly"`
+
+---
+
+### 2. Dynamic Rendering with a Render Function
+
+In `TrackingDash`, I created a `renderCards` function that maps through the JSON data and dynamically renders `Card` components based on the current timeframe.
+
+```jsx
+// TrackingDash.jsx
+import data from "../data/data.json";
+import Card from "./card";
+
+const TrackingDash = ({ timeframe, setTimeFrame }) => {
+  const renderCards = () => {
+    return data.map((item) => {
+      // Destructure current and previous values based on selected timeframe
+      const { current, previous } = item.timeframes[timeframe];
+
+      return (
+        <Card
+          key={item.title}
+          title={item.title}
+          timeframe={timeframe}
+          current={current}
+          previous={previous}
+        />
+      );
+    });
+  };
+
+  return (
+    <div className="container">
+      {/* Menu with timeframe buttons */}
+      <div className="menu-container">
+        <div className="buttons">
+          <button onClick={() => setTimeFrame("daily")}>Daily</button>
+          <button onClick={() => setTimeFrame("weekly")}>Weekly</button>
+          <button onClick={() => setTimeFrame("monthly")}>Monthly</button>
+        </div>
+      </div>
+
+      {/* Card grid - dynamically rendered */}
+      <div className="card-grid">{renderCards()}</div>
+    </div>
+  );
 };
+
+export default TrackingDash;
 ```
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+**Key Takeaways:**
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+- Use `.map()` to iterate over JSON data and return JSX elements
+- Destructuring `item.timeframes[timeframe]` allows dynamic access based on state
+- Always provide a unique `key` prop when rendering lists
 
-### Continued development
+---
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
+### 3. Card Component with Dynamic Props
 
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+The `Card` component receives props and displays the appropriate data. It also dynamically changes the "previous" label based on the timeframe.
 
-### Useful resources
+```jsx
+// Card.jsx
+const Card = ({ title, timeframe, current, previous }) => {
+  const previousInfo = (timeframe) => {
+    if (timeframe === "monthly") return "Last Month";
+    if (timeframe === "weekly") return "Last Week";
+    if (timeframe === "daily") return "Yesterday";
+  };
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
+  return (
+    <div className={`card-container ${title.toLowerCase()}`}>
+      <div className="card-content">
+        <p className="title-text">{title}</p>
+        <p className="current-hours">{current}hrs</p>
+        <p className="previous-hours">
+          {previousInfo(timeframe)} - {previous}hrs
+        </p>
+      </div>
+    </div>
+  );
+};
 
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+export default Card;
+```
+
+**Key Takeaways:**
+
+- Props allow data to flow from parent to child components
+- Helper functions can format display text based on conditions
+- Dynamic class names enable different styling per card
+
+---
+
+### 4. JSON Data Structure
+
+The data is structured to support multiple timeframes for each activity:
+
+```json
+[
+  {
+    "title": "Work",
+    "timeframes": {
+      "daily": { "current": 5, "previous": 7 },
+      "weekly": { "current": 32, "previous": 36 },
+      "monthly": { "current": 103, "previous": 128 }
+    }
+  }
+]
+```
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
-
-**Note: Delete this note and add/remove/edit lines above based on what links you'd like to share.**
-
-## Acknowledgments
-
-This is where you can give a hat tip to anyone who helped you out on this project. Perhaps you worked in a team or got some inspiration from someone else's solution. This is the perfect place to give them some credit.
-
-**Note: Delete this note and edit this section's content as necessary. If you completed this challenge by yourself, feel free to delete this section entirely.**
+- Website - [Click here](https://my-portfolio-frontend-kappa-lemon.vercel.app/)
+- Frontend Mentor - [Click here](https://www.frontendmentor.io/profile/JoshLiu111)
