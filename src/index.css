@@ -1,0 +1,455 @@
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  --navy-950: #0e1323;
+  --navy-900: #1c204b;
+  --navy-800: #33397a;
+  --navy-200: #bbc0ff;
+  --orange-300: #ff8b64;
+  --purple-700: #7335d2;
+  --purple-600: #5747ea;
+  --purple-500: #7078c9;
+  --blue-300: #55c2e6;
+  --pink-400: #ff5e7d;
+  --green-400: #4bcf82;
+  --yellow-300: #f1c75b;
+  --grey-200: #d8d8d8;
+}
+
+.text-preset-1 {
+  font-family: "Rubik", sans-serif;
+  font-size: 56px;
+  font-weight: 300;
+  line-height: 66px;
+  letter-spacing: 0;
+}
+.text-preset-2 {
+  font-family: "Rubik", sans-serif;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 47px;
+  letter-spacing: 0;
+}
+.text-preset-3 {
+  font-family: "Rubik", sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 38px;
+  letter-spacing: 0;
+}
+.text-preset-4 {
+  font-family: "Rubik", sans-serif;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 28px;
+  letter-spacing: 0;
+}
+.text-preset-5-medium {
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+.text-preset-5-regular {
+  font-family: "Rubik", sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+.text-preset-6 {
+  font-family: "Rubik", sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: 0;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+}
+
+.main-page {
+  background-color: var(--navy-950);
+  color: var(--white);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.container {
+  display: flex;
+  /* border: 1px white solid; */
+  gap: 32px;
+}
+.menu-container {
+  width: 255px;
+  height: 520px;
+  display: flex;
+  /* border: 1px solid green; */
+  flex-direction: column;
+  background-color: var(--navy-900);
+  gap: 8px;
+  /* padding: 32px; */
+  border-radius: 15px;
+}
+.menu-avatar-container {
+  display: flex;
+  justify-content: start;
+  align-items: start;
+  width: 255px;
+  height: 354px;
+  background-color: var(--purple-600);
+  border-radius: 15px;
+  padding: 32px;
+  gap: 8px;
+}
+.menu-avatar-content {
+  display: flex;
+  flex-direction: column;
+  width: 138px;
+  gap: 40px;
+}
+.avatar-image {
+  width: 78px;
+  height: 78px;
+  border: 3px white solid;
+  border-radius: 50%;
+}
+.user-info {
+  color: var(--navy-200);
+}
+.user-name {
+  color: var(--white);
+}
+.buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
+  gap: 24px;
+  width: 68px;
+  height: 106px;
+  padding: 28px;
+  margin-top: 20px;
+}
+.buttons button {
+  background: none;
+  border: none;
+  color: var(--purple-500);
+  cursor: pointer;
+}
+.buttons button:hover,
+.buttons button:active,
+.buttons button:focus {
+  color: var(--white);
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-auto-rows: 1fr;
+  gap: 32px;
+}
+
+.card-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  /* border: 1px solid white; */
+  width: 255px;
+  height: 244px;
+  gap: 8px;
+  border-radius: 15px;
+}
+
+.card-container.work {
+  background-image: url("/images/icon-work.svg");
+  background-color: var(--orange-300);
+  background-repeat: no-repeat;
+  background-position: top -10px right 16px;
+}
+.card-container.play {
+  background-image: url("/images/icon-play.svg");
+  background-color: var(--blue-300);
+  background-repeat: no-repeat;
+  background-position: top -10px right 16px;
+}
+.card-container.study {
+  background-image: url("/images/icon-study.svg");
+  background-color: var(--pink-400);
+  background-repeat: no-repeat;
+  background-position: top -10px right 16px;
+}
+.card-container.exercise {
+  background-image: url("/images/icon-exercise.svg");
+  background-color: var(--green-400);
+  background-repeat: no-repeat;
+  background-position: top right 16px;
+}
+.card-container.social {
+  background-image: url("/images/icon-social.svg");
+  background-color: var(--purple-700);
+  background-repeat: no-repeat;
+  background-position: top -15px right 16px;
+}
+.card-container.self.care {
+  background-image: url("/images/icon-self-care.svg");
+  background-color: var(--yellow-300);
+  background-repeat: no-repeat;
+  background-position: top -10px right 16px;
+}
+
+.card-content {
+  width: 255px;
+  height: 199px;
+  /* border: 1px solid white; */
+  background-color: var(--navy-900);
+  border-radius: 15px;
+  padding: 32px;
+}
+
+.card-info {
+  display: flex;
+  gap: 24px;
+  flex-direction: column;
+}
+.title {
+  display: flex;
+  justify-content: space-between;
+  width: 190px;
+  /* gap: 24px; */
+}
+
+.title img {
+  width: 21px;
+  height: 5px;
+}
+
+.track {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.previous-track {
+  color: var(--navy-200);
+}
+
+/*==============================
+        Tablet
+==============================*/
+/* Tablet - 768px */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    height: 612px;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  .menu-container {
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    gap: 0;
+  }
+
+  .menu-avatar-container {
+    width: 100%;
+    height: auto;
+    padding: 32px;
+    padding-bottom: 16px;
+    flex-direction: row;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .menu-avatar-content {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    gap: 20px;
+  }
+
+  .avatar-image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .user-name {
+    font-size: 24px;
+    line-height: 28px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    padding: 24px 32px;
+    margin-top: 0;
+    gap: 40px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .card-container {
+    width: 188px;
+    height: 213px; /* Keep fixed height so colored bg + icon shows */
+  }
+
+  .card-content {
+    width: 100%;
+    height: 180px; /* Smaller content area */
+    padding: 24px;
+  }
+  .card-info {
+    width: 145px;
+    gap: 16px;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .track .text-preset-1 {
+    font-size: 32px;
+    line-height: 38px;
+  }
+}
+
+/*==============================
+        mobile 376px
+==============================*/
+@media (max-width: 375px) {
+  .container {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 327px;
+    gap: 24px;
+    padding: 24px;
+  }
+
+  /* Menu Container */
+  .menu-container {
+    flex-direction: column;
+    width: 327px;
+    height: auto;
+    gap: 0;
+  }
+
+  /* Avatar Section */
+  .menu-avatar-container {
+    width: 327px;
+    height: auto;
+    padding: 32px;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .menu-avatar-content {
+    flex-direction: row;
+    align-items: center;
+    width: auto;
+    gap: 24px;
+  }
+
+  .avatar-image {
+    width: 64px;
+    height: 64px;
+  }
+
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .buttons {
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    height: auto;
+    padding: 24px 32px;
+    margin-top: 0;
+    gap: 0;
+  }
+
+  /* Card Grid - Single Column Grid */
+  .card-grid {
+    width: 327px;
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  /* Cards */
+  .card-container {
+    width: 100%;
+    height: 160px;
+  }
+
+  .card-content {
+    width: 100%;
+    height: 122px;
+    padding: 24px;
+  }
+
+  .card-info {
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  /* Track - Horizontal Layout */
+  .track {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 0;
+  }
+
+  .track .text-preset-1 {
+    font-size: 32px;
+    line-height: 38px;
+    flex-shrink: 0;
+  }
+
+  .previous-track {
+    font-size: 15px;
+    line-height: 18px;
+    white-space: nowrap;
+  }
+}
